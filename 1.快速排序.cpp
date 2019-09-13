@@ -1,4 +1,17 @@
 #inlcude <iostream>
+using namespace std;
+
+int partition(int *a, int l, int r) {
+	int p = l, i = l, j = r - 1;
+	while (i < j) {
+		while (a[p] > a[++i]);
+		while (a[p] < a[--j]);
+		int tmp = a[j];
+		a[j] = a[p];
+		a[p] = tmp;
+	}
+	return j;
+}
 
 void quick_sort(int *a, int l, int r) {
 	if (l < r) {
@@ -7,7 +20,6 @@ void quick_sort(int *a, int l, int r) {
 		quick_sort(a, mid + 1, r);
 	}
 }
-
 
 int main() {
 	int a[7]  = {1, 3, 2, 0, 2, 1, 6};
